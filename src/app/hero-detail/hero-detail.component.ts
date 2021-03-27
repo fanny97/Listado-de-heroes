@@ -24,7 +24,9 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    // Nota el ! al final
+    const id = +this.route.snapshot.paramMap.get('id')!;
+    //referencia: https://stackoverflow.com/questions/55588968/type-error-object-is-possibly-null-ts2531-for-window-document
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
